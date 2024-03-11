@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
-# a Bash script that pings an IP address passed as an argument.
-
-if [ $# -eq 0 ]
+#script that pings an IP address
+ARG="$1"
+if [ "$ARG" ];
 then
-	echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
+    ping -c 5 "$1"
 else
-	first_arg="$1"
-	ping -c 5 "$first_arg" 
+    echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
 fi
