@@ -23,4 +23,4 @@ echo "server {
 
 sudo nginx -t
 
-sudo service nginx start
+sudo service nginx restart
