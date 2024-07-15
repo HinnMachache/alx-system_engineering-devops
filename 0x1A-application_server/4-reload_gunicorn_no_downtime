@@ -1,0 +1,25 @@
+#!/bin/env bash
+
+# Function to get Gunicorn's master process ID
+get_gunicorn_master_pid() {
+  # Replace 'gunicorn' with the exact name of your Gunicorn process if needed
+  pgrep -f 'gunicorn: master'
+}
+
+# Function to gracefully reload Gunicorn
+reload_gunicorn() {
+  local pid
+  pid=$(get_gunicorn_master_pid)
+  if [ -n "$pid" ]; then
+    echo "Reloading Gunicorn master process (PID: $pid)..."
+    kill -HUP "$pid"
+    echo "Gunicorn reloaded successfully."
+  else
+    echo "Gunicorn master process not found."
+    exit 1
+  fi
+}
+
+# Main script execution
+echo "Starting graceful reload of Gunicorn..."
+reload_gunicorn
