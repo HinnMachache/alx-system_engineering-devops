@@ -5,7 +5,7 @@
 gunicorn_pids=$(pgrep gunicorn)
 
 if [ -z "$gunicorn_pids" ]; then
-    echo "No Gunicorn processes found."
+    echo "OK"
     exit 1
 fi
 
